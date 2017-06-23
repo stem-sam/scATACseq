@@ -38,7 +38,7 @@ my_lsa <- function (x, dims = 2)
 }
 
 gz = FALSE
-numclust = 5
+numclust = 3
 numcomponents = 6
 cellcutoff=0.1
 sitecutoff=20000
@@ -112,7 +112,7 @@ abline(v=log10(quantile(num_sites_ncounted,probs=cellcutoff)),lwd=2,col="indianr
 annot.ncounts = label[num_cells_ncounted >= num_cells_ncounted[order(num_cells_ncounted,decreasing=T)[sitecutoff]]]
 #ncounts = bigmat.bin[num_cells_ncounted >= dim(bigmat.bin)[2]*siteperccutoff,]
 ncounts = bigmat.bin[num_cells_ncounted >= num_cells_ncounted[order(num_cells_ncounted,decreasing=T)[sitecutoff]],]
-
+colnames(ncounts) = namelist
 #
 #nquants = sortmat.nonzero[num_cells_ncounted >= num_cells_ncounted[order(num_cells_ncounted,decreasing=T)[sitecutoff]],]
 #
@@ -235,9 +235,9 @@ abline(v=log10(quantile(num_sites_ncounted.prom,probs=cellcutoff)),lwd=2,col="in
 # 	annot.ncounts.prom = label.prom
 # 	ncounts.prom = prom.bin
 # }
-annot.ncounts.prom = label.prom[num_cells_ncounted.prom >= dim(prom.bin)[2]*siteperccutoff]
-ncounts.prom = prom.bin[num_cells_ncounted.prom >= dim(prom.bin)[2]*siteperccutoff,]
-
+annot.ncounts.prom = label.prom[num_cells_ncounted.prom >= num_cells_ncounted.prom[order(num_cells_ncounted.prom,decreasing=T)[sitecutoff]]]
+ncounts.prom = prom.bin[num_cells_ncounted.prom >= num_cells_ncounted.prom[order(num_cells_ncounted.prom,decreasing=T)[sitecutoff]],]
+colnames(ncounts.prom) = namelist
 #
 #nquants.prom = prom.bin[num_cells_ncounted.prom >= num_cells_ncounted.prom[order(num_cells_ncounted.prom,decreasing=T)[sitecutoff]],]
 #
@@ -349,8 +349,10 @@ hist(log10(num_sites_ncounted.distal),main="Number of Sites Each Cell Uses",brea
 abline(v=log10(quantile(num_sites_ncounted.distal,probs=cellcutoff)),lwd=2,col="indianred")
 #dev.off()
 
-annot.ncounts.distal = label.distal[num_cells_ncounted.distal >= dim(distal.bin)[2]*siteperccutoff]
-ncounts.distal = distal.bin[num_cells_ncounted.distal >= dim(distal.bin)[2]*siteperccutoff,]
+annot.ncounts.distal = label.distal[num_cells_ncounted.distal >= num_cells_ncounted.distal[order(num_cells_ncounted.distal,decreasing=T)[sitecutoff]]]
+ncounts.distal = distal.bin[num_cells_ncounted.distal >= num_cells_ncounted.distal[order(num_cells_ncounted.distal,decreasing=T)[sitecutoff]],]
+
+colnames(ncounts.distal) = namelist
 #
 #nquants.distal = distal.quant[num_cells_ncounted.distal >= num_cells_ncounted.distal[order(num_cells_ncounted.distal,decreasing=T)[sitecutoff]],]
 #
