@@ -1,0 +1,11 @@
+library(Matrix)
+library(limma)
+#library(stringr)
+#library(proxy)
+library(data.table)
+library(L1Graph,lib.loc="/net/shendure/vol1/home/cusanovi/R/x86_64-unknown-linux-gnu-library/3.2/")
+library(simplePPT,lib.loc="/net/shendure/vol1/home/cusanovi/R/x86_64-unknown-linux-gnu-library/3.2/")
+library(DDRTree,lib.loc="/net/shendure/vol1/home/cusanovi/R/x86_64-unknown-linux-gnu-library/3.2/")
+library(devtools)
+load_all("/net/shendure/vol1/home/cusanovi/bin/monocle-dev")
+compareModels
